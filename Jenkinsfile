@@ -1,8 +1,11 @@
 pipeline {
     agent any
+    
+    tools {
+        maven 'Maven3'
+    }
 
     stages {
-
         stage('Checkout') {
             steps {
                 checkout scm
@@ -11,15 +14,14 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'echo Maven Build Successful'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'echo Tests Passed'
+                bat 'mvn test'
             }
         }
-
     }
 }
