@@ -15,13 +15,13 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true clean compile'
+                bat 'mvn -Dmaven.repo.local=C:\\mavenrepo clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                bat 'mvn -Dmaven.repo.local=C:\\mavenrepo test'
             }
         }
 
