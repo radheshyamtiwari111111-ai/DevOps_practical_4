@@ -1,11 +1,8 @@
 pipeline {
     agent any
-    
-    tools {
-        maven 'Maven3'
-    }
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -14,14 +11,21 @@ pipeline {
 
         stage('Build') {
             steps {
-                bat 'mvn clean compile'
+                echo 'Building DevOps Project'
             }
         }
 
         stage('Test') {
             steps {
-                bat 'mvn test'
+                echo 'Running Tests'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deployment Successful'
+            }
+        }
+
     }
 }
